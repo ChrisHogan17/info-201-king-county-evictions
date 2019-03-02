@@ -10,9 +10,9 @@ The data set our group will be focusing on for our final project contains inform
 That stated, the target audience would then be focused on the representatives and lobbying groups that have the power to push the bill through the Washington State Legislature.
 
 Below are 3 specific questions that our project will answer for our audience:
-- How many evictions are due to amounts less than one month's rent?
-- How many are no cause v.s. non payment of rent v.s. others?
-- Which area(by zip code) has the most evictions?
+- How many evictions are due to having less than one month's rent?
+- How many are "no cause" v.s. non-payment of rent and others?
+- Which area (by zip code) has the most evictions?
 
 
 ## Technical Description

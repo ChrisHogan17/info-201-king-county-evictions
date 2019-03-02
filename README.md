@@ -9,6 +9,12 @@ The data set our group will be focusing on for our final project contains inform
 
 That stated, the target audience would then be focused on the representatives and lobbying groups that have the power to push the bill through the Washington State Legislature.
 
+Below are 3 specific questions that our project will answer for our audience:
+- How many evictions are due to amounts less than one month's rent?
+- How many are no cause v.s. non payment of rent v.s. others?
+- Which area(by zip code) has the most evictions?
+
+
 ## Technical Description
 
 We have our data in the form of a ``.csv `` file so we will be reading it into R as a `dataframe`. The addresses of each eviction are written out as strings, so we are planning on utilizing the `geocode()` function from `ggmap` and/or leveraging the Google Maps API for geolocation. Additionally we may have to do some reformatting to arrange and filter values but that should be simple enough with `dplyr`. The major challenge we are facing is cleaning up the data. Not every eviction has data for each column, so we are going to have to decide what amount of information we deem sufficient enough to work with and then somehow filter out those entries that were not complete enough for our purposes.

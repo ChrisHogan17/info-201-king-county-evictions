@@ -43,13 +43,29 @@ shinyUI(navbarPage(
       sidebarPanel(
         radioButtons("yes_no", "Did the tenant owe greater than one month's rent?", 
                      choices = list("Yes", "No"), 
-                     selected = "",
+                     selected = "Yes",
                      inline = FALSE, width = NULL, choiceNames = NULL,
                      choiceValues = NULL)
       ),
       
       mainPanel(
         plotlyOutput("backrent_chart")
+      )
+    )
+  ),
+  
+  tabPanel(
+    "Evictions Map",
+    titlePanel("Evictions Mapped by City"),
+    
+    sidebarLayout(
+      
+      sidebarPanel(
+
+      ),
+      
+      mainPanel(
+        leafletOutput("map")
       )
     )
   )

@@ -1,5 +1,6 @@
 library(dplyr)
 library(ggplot2)
+library(leaflet)
 
 source('./analysis.R')
 
@@ -10,5 +11,8 @@ shinyServer(function(input, output) {
   })
   output$backrent_chart <- renderPlotly ({
     return(bar_chart(input$yes_no))
+  })
+  output$map <- renderLeaflet({
+    return(create_map(evictions))
   })
 })

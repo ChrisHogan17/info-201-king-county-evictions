@@ -20,12 +20,12 @@ cities <- as.character(cities$city)
 
 # Bar chart analysis
 
-no_less_than_a_month <- eviction_data %>% filter(less_than_one_month == "No") %>% 
+no_less_than_a_month <- evictions %>% filter(less_than_one_month == "No") %>% 
   group_by(city) %>% count("less_than_one_month")
 
 colnames(no_less_than_a_month)[colnames(no_less_than_a_month) == "n"] <- "No"
 
-less_than_a_month <- eviction_data %>% filter(less_than_one_month == "Yes") %>% 
+less_than_a_month <- evictions %>% filter(less_than_one_month == "Yes") %>% 
   group_by(city) %>% count("less_than_one_month")
 
 colnames(less_than_a_month)[colnames(less_than_a_month) == "n"] <- "Yes"

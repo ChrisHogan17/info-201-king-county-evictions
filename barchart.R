@@ -1,11 +1,10 @@
-eviction_data <- read.csv("evictions.csv")
 library(ggplot2)
 library(dplyr)
 library(plotly)
 
 source("./analysis.R")
 
-bar_chart <- function(bar_variable, data) {
+bar_chart <- function(bar_variable) {
   if (bar_variable == "No") {
     bar_plot <- ggplot(data = all_data, aes(x = city, y = No, the_city = city)) +
       geom_bar(stat = "identity", width = 0.8, fill = "steelblue") +
@@ -28,4 +27,3 @@ bar_chart <- function(bar_variable, data) {
     ggplotly(bar_plot, tooltip = c("the_city"))
   }
 }
-

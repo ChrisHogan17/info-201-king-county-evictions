@@ -12,7 +12,7 @@ source("apikeys.R")
 register_google(key = google_map_key)
 
 create_map <- function(evictions_input){
-  
+
   # Create lattitude and longitude columns, then fill with coordinates
   evictions_coords <- evictions_input %>%
     mutate(city = paste0(city, ", WA")) %>%
@@ -23,7 +23,7 @@ create_map <- function(evictions_input){
   
   # Create map with new coordinate data
   
-  color_map <- colorQuantile("YlOrRd", evictions_coords$back_rent, n = 5)
+  color_map <- colorQuantile("YlOrRd", evictions_coords$back_rent)
   
   eviction_map <- leaflet(data = evictions_coords) %>%
     addProviderTiles(providers$CartoDB.Positron) %>%
@@ -40,3 +40,4 @@ create_map <- function(evictions_input){
 
   return(eviction_map)
 }
+

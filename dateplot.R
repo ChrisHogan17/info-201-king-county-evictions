@@ -5,43 +5,32 @@ source("./analysis.R")
 # plot function
 
 build_date_plot <- function(big_data, city_name) {
-  big_data <- big_data %>% 
+  data <- big_data %>% 
     filter(city == city_name) %>% 
     mutate(month = format(date, "%m"))
   
   month_data <- data.frame(month = "", cases = "", stringsAsFactors = F)
   
-  get_month_total <- function(big_data, monthvar) {
-    big_data <- big_data %>% 
+  get_month_total <- function(data, monthvar) {
+    data <- data %>% 
       filter(month == monthvar)
-    cases <- nrow(big_data)
+    cases <- nrow(data)
     month_data <- rbind(month_data, c(monthvar, cases))
     month_data
   }
   
-  month_data <- get_month_total(big_data, "01")
-  
-  month_data <- get_month_total(big_data, "02")
-  
-  month_data <- get_month_total(big_data, "03")
-  
-  month_data <- get_month_total(big_data, "04")
-  
-  month_data <- get_month_total(big_data, "05")
-  
-  month_data <- get_month_total(big_data, "06")
-  
-  month_data <- get_month_total(big_data, "07")
-  
-  month_data <- get_month_total(big_data, "08")
-  
-  month_data <- get_month_total(big_data, "09")
-  
-  month_data <- get_month_total(big_data, "10")
-  
-  month_data <- get_month_total(big_data, "11")
-  
-  month_data <- get_month_total(big_data, "12")
+  month_data <- get_month_total(data, "01")
+  month_data <- get_month_total(data, "02")
+  month_data <- get_month_total(data, "03")
+  month_data <- get_month_total(data, "04")
+  month_data <- get_month_total(data, "05")
+  month_data <- get_month_total(data, "06")
+  month_data <- get_month_total(data, "07")
+  month_data <- get_month_total(data, "08")
+  month_data <- get_month_total(data, "09")
+  month_data <- get_month_total(data, "10")
+  month_data <- get_month_total(data, "11")
+  month_data <- get_month_total(data, "12")
   
   month_data$cases <- as.numeric(month_data$cases)
   

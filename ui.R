@@ -3,6 +3,8 @@ library(shiny)
 library(plotly)
 
 source('./analysis.R')
+source('./dateplot.R')
+source("./barchart.R")
 
 shinyUI(navbarPage(
   "Evictions Data",
@@ -24,9 +26,30 @@ shinyUI(navbarPage(
         
       ),
       
+      
       # Create a main panel, display your plotly Scatter plot
       mainPanel(
         plotlyOutput("by_month_plot")
+      )
+    )
+  ),
+  
+  tabPanel(
+    "Nonpayment of Rent",
+    titlePanel("Barchart by Amount of Back Rent"),
+    
+    sidebarLayout(
+      
+      sidebarPanel(
+        radioButtons("yes_no", "Did the tenant owe greater than one month's rent?", 
+                     choices = list("Yes", "No"), 
+                     selected = "",
+                     inline = FALSE, width = NULL, choiceNames = NULL,
+                     choiceValues = NULL)
+      ),
+      
+      mainPanel(
+        plotlyOutput("backrent_chart")
       )
     )
   )

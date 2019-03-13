@@ -1,4 +1,5 @@
 library(dplyr)
+library(plotly)
 
 evictions <- read.csv("evictions.csv", stringsAsFactors = F)
 
@@ -17,3 +18,23 @@ cities <- evictions %>%
 
 cities <- as.character(cities$city)
 
+# Bar chart analysis
+
+no_less_than_a_month <- eviction_data %>% filter(less_than_one_month == "No") %>% 
+  group_by(city) %>% count("less_than_one_month")
+
+colnames(no_less_than_a_month)[colnames(no_less_than_a_month) == "n"] <- "No"
+
+less_than_a_month <- eviction_data %>% filter(less_than_one_month == "Yes") %>% 
+  group_by(city) %>% count("less_than_one_month")
+
+colnames(less_than_a_month)[colnames(less_than_a_month) == "n"] <- "Yes"
+
+all_data <- merge(x = no_less_than_a_month, y = less_than_a_month, by = "city", all = TRUE)
+all_data <- all_data[-4]
+
+all_data <- all_data %>% 
+  arrange(No) %>% 
+  slice(1:17)
+
+all_data$city <- as.character(all_data$city)

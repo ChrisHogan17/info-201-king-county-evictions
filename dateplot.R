@@ -9,7 +9,7 @@ build_date_plot <- function(big_data, city_name) {
     filter(city == city_name) %>% 
     mutate(month = format(date, "%m"))
   
-  month_data <- dis.ata.frame(month = "", cases = "", stringsAsFactors = F)
+  month_data <- data.frame(month = "", cases = "", stringsAsFactors = F)
   
   get_month_total <- function(big_data, monthvar) {
     big_data <- big_data %>% 

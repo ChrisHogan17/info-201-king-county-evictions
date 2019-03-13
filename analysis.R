@@ -15,4 +15,5 @@ cities <- evictions %>%
   count(city) %>% 
   select(city) 
 
-cities <- as.vector(cities, mode = "character")
+cities <- as.character(cities$city)
+

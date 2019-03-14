@@ -68,7 +68,7 @@ shinyUI(navbarPage(
       sidebarPanel(
         radioButtons(
           "yes_no",
-          "Did the tenant owe greater than one month's rent?",
+          "Did the tenant owe less than one month's rent?",
           choices = list("Yes", "No"),
           selected = "Yes",
           inline = FALSE, width = NULL, choiceNames = NULL,

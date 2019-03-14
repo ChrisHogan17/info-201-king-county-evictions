@@ -1,3 +1,5 @@
+# Load necessary libraries and source necessary files
+
 library(dplyr)
 library(ggplot2)
 library(leaflet)
@@ -7,7 +9,8 @@ source("./map.R")
 source("./dateplot.R")
 source("./barchart.R")
 
-# Start shinyServer
+# Start shinyServer with user's inputs
+
 shinyServer(function(input, output) {
   output$by_month_plot <- renderPlotly({
     return(build_date_plot(evictions_date, input$cityvar))

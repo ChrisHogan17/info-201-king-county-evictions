@@ -1,6 +1,7 @@
 # ui.R
 library(shiny)
 library(plotly)
+library(leaflet)
 
 source('./analysis.R')
 source('./dateplot.R')

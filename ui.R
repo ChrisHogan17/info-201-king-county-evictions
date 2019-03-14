@@ -2,6 +2,7 @@
 library(shiny)
 library(plotly)
 library(leaflet)
+library(shinyWidgets)
 
 source('./analysis.R')
 source('./dateplot.R')
@@ -14,6 +15,12 @@ shinyUI(navbarPage(
     fluidRow(
       column(10,
              includeMarkdown("README.md"))
+    ),
+    
+    setBackgroundColor(
+      color = c("#F7FBFF", "#2171B5"),
+      gradient = "linear",
+      direction = "right"
     )
     ),
   

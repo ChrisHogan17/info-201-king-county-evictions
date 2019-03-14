@@ -77,7 +77,25 @@ shinyUI(navbarPage(
     sidebarLayout(
       
       sidebarPanel(
-
+        h4("Map will take a moment to load after adjusting date range."),
+        p("A mapping of evictions by the city they occured in.
+          Any level of specificity beyond city could have potentially been a
+          breach of privacy"),
+        p("The color of the clustered circles corresponds to the amount of
+          data points within that cluster. The color of each individual circle
+          in each cluster corresponds to the amount of back rent that person
+          had when evicted (How far behind on rent they were). The size of each
+          circle corresponds to the amount of that individual's one month rent
+          divided by 100 (for scaling purposes)"),
+        
+        sliderInput(
+          inputId = "date_range",
+          label = "Date Range",
+          min = as.Date("2017-01-01"),
+          max = as.Date("2017-12-31"),
+          value = c(as.Date("2017-01-01"), as.Date("2017-12-31"))
+        )
+        
       ),
       
       mainPanel(

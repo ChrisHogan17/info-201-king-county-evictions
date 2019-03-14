@@ -47,4 +47,3 @@ build_date_plot <- function(big_data, city_name) {
            xaxis = list(title = "Month"),
            yaxis = list(title = "Number of Cases"))
 }
-

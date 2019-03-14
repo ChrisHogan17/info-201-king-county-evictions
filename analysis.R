@@ -38,3 +38,10 @@ all_data <- all_data %>%
   slice(1:17)
 
 all_data$city <- as.character(all_data$city)
+
+# Get average back rent by city
+backrent <- evictions %>% 
+  arrange(-Amount.of.Back.Rent..n.a.if.none.) %>% 
+  slice(1:1263) %>% 
+  group_by(city) %>% 
+  summarise(mean(Amount.of.Back.Rent..n.a.if.none.))

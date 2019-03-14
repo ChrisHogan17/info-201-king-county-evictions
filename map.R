@@ -56,4 +56,3 @@ create_map <- function(evictions_input){
 
   return(eviction_map)
 }
-

@@ -1,6 +1,7 @@
 # ui.R
 library(shiny)
 library(plotly)
+library(leaflet)
 
 source('./analysis.R')
 source('./dateplot.R')
@@ -8,6 +9,22 @@ source("./barchart.R")
 
 shinyUI(navbarPage(
   "Evictions Data",
+  tabPanel(
+    "The main page",
+    titlePanel("Information"),
+    
+    sidebarLayout(
+      
+      sidebarPanel(
+        
+      ),
+      
+      mainPanel(
+        p()
+      )
+    )
+  ),
+  
   # Create a tabPanel to show your scatter plot
   tabPanel(
     "Evictions by Month",

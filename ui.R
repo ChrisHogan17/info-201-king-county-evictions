@@ -9,6 +9,14 @@ source("./barchart.R")
 
 shinyUI(navbarPage(
   "Evictions Data",
+  tabPanel(
+    "Information",
+    fluidRow(
+      column(10,
+             includeMarkdown("README.md"))
+    )
+    ),
+  
   # Create a tabPanel to show your scatter plot
   tabPanel(
     "Evictions by Month",

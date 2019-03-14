@@ -88,11 +88,14 @@ shinyUI(navbarPage(
     titlePanel("Evictions Mapped by City"),
 
     sidebarLayout(
-   
+
       # Add a sidebar with legend information
 
       sidebarPanel(
-        h4("Map will take a moment to load after adjusting date range."),
+        h3("Map will take a moment to load after adjusting date range.",
+           style =  "font-family: 'Helvetica';
+        font-weight: 500; line-height: 1.1;
+        color: #ff5100;"),
         p("A mapping of evictions by the city they occured in.
           Any level of specificity beyond city could have potentially been a
           breach of privacy"),

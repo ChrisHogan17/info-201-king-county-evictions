@@ -15,6 +15,12 @@ Below are 3 specific questions that our project will answer for our audience:
 - Which area (by zip code) has the most evictions?
 
 
-## Technical Description
+## Project Wrap-Up
 
-We have our data in the form of a ``.csv `` file so we will be reading it into R as a `dataframe`. The addresses of each eviction are written out as strings, so we are planning on utilizing the `geocode()` function from `ggmap` and/or leveraging the Google Maps API for geolocation. Additionally we may have to do some reformatting to arrange and filter values but that should be simple enough with `dplyr`. The major challenge we are facing is cleaning up the data. Not every eviction has data for each column, so we are going to have to decide what amount of information we deem sufficient enough to work with and then somehow filter out those entries that were not complete enough for our purposes.
+Throughout the project, we have generated 3 interactive visualizations. By observing each
+city's monthly evictions, we can find that, in most cases, the dateplot demonstrates relatively high eviction numbers during Winter and Spring seasons from December to April, and the eviction number reaches its peak hovering in March. The eviction number gradually decreases and maintains 
+itself at a relatively low level as Summer approaches which begins in June. As we enter Winter,
+the eviction number goes up beginning in around November. By observing the back rent cases from
+the barchart, we can tell that Federal Way, Renton and Kent have the most number of cases where tenant owes greater than one month rent. In the same way, these three cities have the most number of cases where tenant owes less than one month rent. By observing the evictions map, we can see that Kent and Federal Way have the highest number of evictions, besides these two cities, Renton, 
+Auburn and Seattle also have relatively high number of evictions. Among the cities above, Seattle has two eviction cases with the back rent amount greater than or equal to 30,000, highest back rent amount for eviction cases in the whole dataset. 
+

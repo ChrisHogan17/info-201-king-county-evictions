@@ -5,8 +5,8 @@ account: jm254
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 788803
-bundleId: 1938378
+bundleId: 1938471
 url: https://jm254.shinyapps.io/info-201-king-county-evictions/
-when: 1552532204.53093
+when: 1552536359.42396
 asMultiple: FALSE
 asStatic: FALSE

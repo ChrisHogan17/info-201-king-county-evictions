@@ -15,12 +15,6 @@ shinyUI(navbarPage(
     fluidRow(
       column(10,
              includeMarkdown("README.md"))
-    ),
-    
-    setBackgroundColor(
-      color = c("#F7FBFF", "#2171B5"),
-      gradient = "linear",
-      direction = "right"
     )
     ),
   
@@ -29,6 +23,12 @@ shinyUI(navbarPage(
     "Evictions by Month",
     # Add a titlePanel to your tab
     titlePanel("Evictions by Month Plot"),
+    
+    setBackgroundColor(
+      color = c("#FFC0CB", "#F0E68C"),
+      gradient = "linear",
+      direction = "left"
+    ),
     
     # Create a sidebar layout for this tab (page)
     sidebarLayout(

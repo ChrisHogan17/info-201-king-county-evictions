@@ -13,13 +13,20 @@ register_google(key = google_map_key)
 
 create_map <- function(evictions_input){
 
-  # Create lattitude and longitude columns, then fill with coordinates
+  # Format dataset for easier mapping
   evictions_coords <- evictions_input %>%
     mutate(city = paste0(city, ", WA")) %>%
-    mutate(long = 0, lat = 0) %>%
     rename("back_rent" = Amount.of.Back.Rent..n.a.if.none.)
   
-  evictions_coords[, c("long", "lat")] <- geocode(evictions_coords$city)
+  # Find coordinates of each city in the set
+  coords <- evictions_coords %>%
+    count(city) %>%
+    mutate(long = 0, lat = 0)
+  
+  coords[, c("long", "lat")] <- geocode(coords$city)
+  
+  # Join to whole data set
+  evictions_coords <- left_join(evictions_coords, coords)
   
   # Create map with new coordinate data
   

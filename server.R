@@ -16,6 +16,6 @@ shinyServer(function(input, output) {
     return(bar_chart(input$yes_no))
   })
   output$map <- renderLeaflet({
-    return(create_map(evictions))
+    return(create_map(evictions, input$date_range[1], input$date_range[2]))
   })
 })

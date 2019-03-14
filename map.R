@@ -11,13 +11,32 @@ source("apikeys.R")
 
 register_google(key = google_map_key)
 
-create_map <- function(evictions_input){
+# Create date range for user input controls
+date_values <- seq(as.Date("2017-01-01"), as.Date("2017-12-31"), by="1 day")
+
+
+# Create map function, takes the dataset as the input and returns a leaflet map
+
+create_map <- function(evictions_input, start_date, end_date){
 
   # Format dataset for easier mapping
   evictions_coords <- evictions_input %>%
     mutate(city = paste0(city, ", WA")) %>%
     rename("back_rent" = Amount.of.Back.Rent..n.a.if.none.)
   
+  # Add dates to the formated data set
+  
+  coord_dates <- evictions_date %>%
+    rename("date_form" = date) %>%
+    select(CaseNumber, "date_form")
+  
+  evictions_coords <- left_join(evictions_coords, coord_dates)
+  
+  # Filter based on user input
+  evictions_coords <- evictions_coords %>%
+    filter(date_form > start_date,
+           date_form < end_date)
+
   # Find coordinates of each city in the set
   coords <- evictions_coords %>%
     count(city) %>%
@@ -25,12 +44,12 @@ create_map <- function(evictions_input){
   
   coords[, c("long", "lat")] <- geocode(coords$city)
   
-  # Join to whole data set
+  # Join coordinates to whole data set
   evictions_coords <- left_join(evictions_coords, coords)
   
   # Create map with new coordinate data
   
-  color_map <- colorQuantile("YlOrRd", evictions_coords$back_rent)
+  color_map <- colorNumeric("YlOrRd", evictions_coords$back_rent)
   
   eviction_map <- leaflet(data = evictions_coords) %>%
     addProviderTiles(providers$CartoDB.Positron) %>%
@@ -38,12 +57,19 @@ create_map <- function(evictions_input){
     addCircleMarkers(
       lat = ~lat,
       lng = ~long,
-      label = ~(paste0(city, ", Eviction Reason: ", eviction_reason)),
+      label = ~(paste0(city,
+                       ", Eviction Reason: ", eviction_reason,
+                       ", Rent: ", tenant_rent,
+                       ", Back Rent: ", back_rent)),
       radius = ~(tenant_rent / 100),
       color = ~color_map(back_rent),
       clusterOptions = markerClusterOptions()
     ) %>%
-    addLegend(pal = color_map, values = ~back_rent)
+    addLegend(
+      pal = color_map,
+      values = ~back_rent,
+      title = "Amount of Back Rent in USD"
+    )
 
   return(eviction_map)
 }

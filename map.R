@@ -11,6 +11,8 @@ source("apikeys.R")
 
 register_google(key = google_map_key)
 
+# Create map function, takes the dataset as the input and returns a leaflet map
+
 create_map <- function(evictions_input){
 
   # Format dataset for easier mapping
@@ -25,12 +27,12 @@ create_map <- function(evictions_input){
   
   coords[, c("long", "lat")] <- geocode(coords$city)
   
-  # Join to whole data set
+  # Join coordinates to whole data set
   evictions_coords <- left_join(evictions_coords, coords)
   
   # Create map with new coordinate data
   
-  color_map <- colorQuantile("YlOrRd", evictions_coords$back_rent)
+  color_map <- colorNumeric("YlOrRd", evictions_coords$back_rent)
   
   eviction_map <- leaflet(data = evictions_coords) %>%
     addProviderTiles(providers$CartoDB.Positron) %>%
@@ -38,12 +40,19 @@ create_map <- function(evictions_input){
     addCircleMarkers(
       lat = ~lat,
       lng = ~long,
-      label = ~(paste0(city, ", Eviction Reason: ", eviction_reason)),
+      label = ~(paste0(city,
+                       ", Eviction Reason: ", eviction_reason,
+                       ", Rent: ", tenant_rent,
+                       ", Back Rent: ", back_rent)),
       radius = ~(tenant_rent / 100),
       color = ~color_map(back_rent),
       clusterOptions = markerClusterOptions()
     ) %>%
-    addLegend(pal = color_map, values = ~back_rent)
+    addLegend(
+      pal = color_map,
+      values = ~back_rent,
+      title = "Amount of Back Rent in USD"
+    )
 
   return(eviction_map)
 }

@@ -1,8 +1,12 @@
+# Load necessary libraries and source necessary files
+
 library(ggplot2)
 library(dplyr)
 library(plotly)
 
 source("./analysis.R")
+
+# Create function for making the bar chart
 
 bar_chart <- function(bar_variable) {
   if (bar_variable == "No") {

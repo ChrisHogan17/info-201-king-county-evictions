@@ -11,15 +11,32 @@ source("apikeys.R")
 
 register_google(key = google_map_key)
 
+# Create date range for user input controls
+date_values <- seq(as.Date("2017-01-01"), as.Date("2017-12-31"), by="1 day")
+
+
 # Create map function, takes the dataset as the input and returns a leaflet map
 
-create_map <- function(evictions_input){
+create_map <- function(evictions_input, start_date, end_date){
 
   # Format dataset for easier mapping
   evictions_coords <- evictions_input %>%
     mutate(city = paste0(city, ", WA")) %>%
     rename("back_rent" = Amount.of.Back.Rent..n.a.if.none.)
   
+  # Add dates to the formated data set
+  
+  coord_dates <- evictions_date %>%
+    rename("date_form" = date) %>%
+    select(CaseNumber, "date_form")
+  
+  evictions_coords <- left_join(evictions_coords, coord_dates)
+  
+  # Filter based on user input
+  evictions_coords <- evictions_coords %>%
+    filter(date_form > start_date,
+           date_form < end_date)
+
   # Find coordinates of each city in the set
   coords <- evictions_coords %>%
     count(city) %>%

@@ -38,7 +38,8 @@ shinyUI(navbarPage(
         
         # Make a textInput widget for searching for a state in your scatter plot
         selectInput("cityvar", "Select a City", 
-                    choices = c(cities))
+                    choices = c(cities),
+                    selected = "Seattle")
         
       ),
       

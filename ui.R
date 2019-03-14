@@ -2,6 +2,7 @@
 library(shiny)
 library(plotly)
 library(leaflet)
+library(shinyWidgets)
 
 source('./analysis.R')
 source('./dateplot.R')

@@ -1,4 +1,5 @@
-# ui.R
+# Load necessary libraries and source necessary files
+
 library(shiny)
 library(plotly)
 library(leaflet)
@@ -8,7 +9,11 @@ source("./analysis.R")
 source("./dateplot.R")
 source("./barchart.R")
 
+# Create a UI
+
 shinyUI(navbarPage(
+  # Create a main tab with the README as information
+
   "Evictions Data",
   tabPanel(
     "Information",
@@ -18,10 +23,12 @@ shinyUI(navbarPage(
     )
     ),
 
-  # Create a tabPanel to show your scatter plot
+  # Create a tabPanel to show the scatter plot
+
   tabPanel(
     "Evictions by Month",
-    # Add a titlePanel to your tab
+
+    # Add a titlePanel to the tab
     titlePanel("Evictions by Month Plot"),
 
     setBackgroundColor(
@@ -30,25 +37,26 @@ shinyUI(navbarPage(
       direction = "left"
     ),
 
-    # Create a sidebar layout for this tab (page)
+    # Create a sidebar layout for this tab
     sidebarLayout(
 
-      # Create a sidebarPanel for your controls
+      # Create a sidebarPanel for the controls
       sidebarPanel(
 
-        # Make a textInput widget for searching for a state in your scatter plot
+        # Make a textInput widget for searching for a city in the scatter plot
         selectInput("cityvar", "Select a City",
                     choices = c(cities),
                     selected = "Seattle")
-
       ),
 
-      # Create a main panel, display your plotly Scatter plot
+      # Create a main panel to display the plotly Scatter plot
       mainPanel(
         plotlyOutput("by_month_plot")
       )
     )
   ),
+
+  # Create a tab for the bar chart
 
   tabPanel(
     "Nonpayment of Rent",
@@ -56,6 +64,7 @@ shinyUI(navbarPage(
 
     sidebarLayout(
 
+      # Create options for user input based on backrent
       sidebarPanel(
         radioButtons(
           "yes_no",
@@ -72,11 +81,15 @@ shinyUI(navbarPage(
     )
   ),
 
+  # Create tab for the evictions map
+
   tabPanel(
     "Evictions Map",
     titlePanel("Evictions Mapped by City"),
 
     sidebarLayout(
+   
+      # Add a sidebar with legend information
 
       sidebarPanel(
         h4("Map will take a moment to load after adjusting date range."),
@@ -90,6 +103,7 @@ shinyUI(navbarPage(
           circle corresponds to the amount of that individual's one month rent
           divided by 100 (for scaling purposes)"),
 
+        # Create a slider for user input of the date range
         sliderInput(
           inputId = "date_range",
           label = "Date Range",

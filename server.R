@@ -2,13 +2,13 @@ library(dplyr)
 library(ggplot2)
 library(leaflet)
 
-source('./analysis.R')
-source('./map.R')
-source('./dateplot.R')
+source("./analysis.R")
+source("./map.R")
+source("./dateplot.R")
 source("./barchart.R")
 
 # Start shinyServer
-shinyServer(function(input, output) { 
+shinyServer(function(input, output) {
   output$by_month_plot <- renderPlotly({
     return(build_date_plot(evictions_date, input$cityvar))
   })

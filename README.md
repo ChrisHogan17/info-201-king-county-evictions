@@ -1,4 +1,5 @@
 # King County Evictions
+[Project Page](https://jm254.shinyapps.io/info-201-king-county-evictions)
 
 ## Project Description
 The data set our group will be focusing on for our final project contains information about eviction (unlawful detainer) cases in King County. The data was collected by the *King County Bar Association Housing Justice Project*. One of the group members (Alyssa) was a part of the research team that collected information from cases and translated it into a readable form of data.
@@ -18,9 +19,8 @@ Below are 3 specific questions that our project will answer for our audience:
 ## Project Wrap-Up
 
 Throughout the project, we have generated 3 interactive visualizations. By observing each
-city's monthly evictions, we can find that, in most cases, the dateplot demonstrates relatively high eviction numbers during Winter and Spring seasons from December to April, and the eviction number reaches its peak hovering in March. The eviction number gradually decreases and maintains 
+city's monthly evictions, we can find that, in most cases, the dateplot demonstrates relatively high eviction numbers during Winter and Spring seasons from December to April, and the eviction number reaches its peak hovering in March. The eviction number gradually decreases and maintains
 itself at a relatively low level as Summer approaches which begins in June. As we enter Winter,
 the eviction number goes up beginning in around November. By observing the back rent cases from
-the barchart, we can tell that Federal Way, Renton and Kent have the most number of cases where tenant owes greater than one month rent. In the same way, these three cities have the most number of cases where tenant owes less than one month rent. By observing the evictions map, we can see that Kent and Federal Way have the highest number of evictions, besides these two cities, Renton, 
-Auburn and Seattle also have relatively high number of evictions. Among the cities above, Seattle has two eviction cases with the back rent amount greater than or equal to 30,000, highest back rent amount for eviction cases in the whole dataset. 
-
+the barchart, we can tell that Federal Way, Renton and Kent have the most number of cases where tenant owes greater than one month rent. In the same way, these three cities have the most number of cases where tenant owes less than one month rent. By observing the evictions map, we can see that Kent and Federal Way have the highest number of evictions, besides these two cities, Renton,
+Auburn and Seattle also have relatively high number of evictions. Among the cities above, Seattle has two eviction cases with the back rent amount greater than or equal to 30,000, highest back rent amount for eviction cases in the whole dataset.
